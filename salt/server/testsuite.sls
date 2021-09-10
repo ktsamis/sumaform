@@ -71,8 +71,7 @@ java_packages:
   pkg.installed:
     - pkgs:
       - java-11-openjdk: 11.0.11.0-3.56.1
-      - java-11-headless: 11.0.11.0-3.56.1
-      - java-11-devel: 11.0.11.0-3.56.1
+      - java-11-openjdk-headless: 11.0.11.0-3.56.1
 
 testsuite_salt_packages:
   pkg.installed:
