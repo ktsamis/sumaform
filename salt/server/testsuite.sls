@@ -64,6 +64,9 @@ testsuite_packages:
       - aaa_base-extras
       - wget
       - OpenIPMI
+      - java-11-openjdk: 11.0.11.0-3.56.1
+      - java-11-headless: 11.0.11.0-3.56.1
+      - java-11-devel: 11.0.11.0-3.56.1
     - require:
       - sls: repos
 
