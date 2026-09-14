@@ -99,20 +99,7 @@ jobs:
     - name: Scan the pull request
       id: scan
       if: github.event_name == 'workflow_run' && env.PR_NUMBER != ''
-      uses: SonarSource/sonarqube-scan-action@22918119ff8e1ca75a623e15c8296b6ea4fbe28f #v8.2.1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: https://sonarcloud.io
-      with:
-        args: >
-          -Dsonar.host.url=https://sonarcloud.io
-          -Dsonar.organization=uyuni-project
-          -Dsonar.projectKey=uyuni-project_sumaform
-          -Dsonar.scm.revision=${{ github.event.workflow_run.head_sha }}
-          -Dsonar.pullrequest.key=${{ env.PR_NUMBER }}
-          -Dsonar.pullrequest.branch=${{ env.PR_BRANCH }}
-          -Dsonar.pullrequest.base=${{ env.PR_BASE }}
+      run: echo "WOULD SCAN key=${PR_NUMBER} branch=${PR_BRANCH} base=${PR_BASE}"
 
     - name: Report the scan result on the pull request
       if: always() && env.CHECK_RUN_ID != ''
@@ -139,8 +126,4 @@ jobs:
 
     - name: Scan master
       if: github.event_name == 'push'
-      uses: SonarSource/sonarqube-scan-action@22918119ff8e1ca75a623e15c8296b6ea4fbe28f #v8.2.1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: https://sonarcloud.io
+      run: git log --oneline -1
