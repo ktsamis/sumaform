@@ -21,7 +21,7 @@ jobs:
     - name: Save the pull request number
       env:
         PR_NUMBER: ${{ github.event.pull_request.number }}
-      run: echo "PR_NUMBER=${PR_NUMBER}" > pr-metadata
+      run: printf 'nothing\n' > pr-metadata
 
     - name: Upload the pull request metadata
       uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 #v5.0.0
